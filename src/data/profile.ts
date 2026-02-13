@@ -1,0 +1,350 @@
+export type SkillCategory = {
+  title: string
+  items: string[]
+}
+
+export type ExperienceProject = {
+  name: string
+  summary: string
+  achievements: string[]
+  techStack: string[]
+}
+
+export type ExperienceItem = {
+  company: string
+  role: string
+  period: string
+  location?: string
+  summary: string
+  techHighlights: string[]
+  projects?: ExperienceProject[]
+}
+
+export type ProjectHighlight = {
+  name: string
+  problem: string
+  architecture: string
+  achievements: string[]
+  techStack: string[]
+}
+
+export type Certification = {
+  name: string
+  provider: string
+  credentialId?: string
+}
+
+export type EducationItem = {
+  program: string
+  institution: string
+  focus?: string
+}
+
+export type ExternalProfile = {
+  label: string
+  url: string
+  type: 'github' | 'linkedin' | 'docker' | 'leetcode' | 'email'
+}
+
+export const hero = {
+  name: 'Satish Prasad',
+  title: 'Senior Java Backend Engineer | Cloud & Microservices Architect',
+  tagline:
+    'Engineering resilient, cloud-native platforms and tokenization services for regulated enterprises.',
+  primaryCtas: [
+    { label: 'View Projects', href: '#projects' },
+    { label: 'Download Resume', href: '/Satish_Prasad_Resume.pdf', download: true },
+  ],
+}
+
+export const about = [
+  'Senior Java Backend Engineer with 10+ years designing and delivering secure, cloud-native services across regulated industries.',
+  'Architects microservices ecosystems with Spring Boot and Spring Cloud, applying domain-driven design, event-driven integration, and zero-downtime deployment strategies.',
+  'Partners with product and security teams to embed encryption, observability, and compliance (PCI DSS, GDPR) into distributed systems at scale.',
+]
+
+export const skills: SkillCategory[] = [
+  {
+    title: 'Programming Languages & Platforms',
+    items: ['Java (8/11/17)', 'J2EE', 'SQL', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
+  },
+  {
+    title: 'Frameworks & Libraries',
+    items: ['Spring Boot', 'Spring Cloud', 'Spring Security', 'Hibernate / JPA', 'GraphQL', 'React.js'],
+  },
+  {
+    title: 'Databases & Caching',
+    items: ['MySQL', 'PostgreSQL', 'Oracle', 'MongoDB', 'DynamoDB', 'Redis'],
+  },
+  {
+    title: 'Cloud & DevOps',
+    items: [
+      'AWS (EC2, S3, Lambda, RDS, DynamoDB, API Gateway, KMS, IAM, CloudWatch)',
+      'Docker',
+      'Kubernetes',
+    ],
+  },
+  {
+    title: 'Messaging & Streaming',
+    items: ['Kafka', 'RabbitMQ'],
+  },
+  {
+    title: 'CI/CD & Build Tools',
+    items: ['Maven', 'Gradle', 'Git', 'Jenkins', 'GitHub Actions', 'Nexus'],
+  },
+  {
+    title: 'Testing & Quality',
+    items: ['JUnit', 'Mockito', 'TestNG', 'Cucumber (BDD)', 'Integration Testing', 'Jacoco', 'Postman'],
+  },
+  {
+    title: 'API Gateway & Security',
+    items: ['APISIX', 'NGINX', 'Custom Lua Plugins', 'Data Encryption', 'Tokenization'],
+  },
+  {
+    title: 'Tools & Methodologies',
+    items: [
+      'IntelliJ IDEA',
+      'Eclipse',
+      'VS Code',
+      'JIRA',
+      'Confluence',
+      'Agile / Scrum',
+      'Microservices Architecture',
+      'Continuous Delivery',
+    ],
+  },
+]
+
+export const experience: ExperienceItem[] = [
+  {
+    company: 'Altimetrik India Pvt. Ltd.',
+    role: 'Senior Engineer – Product & Platform Engineering',
+    period: 'Jan 2022 – Jan 2026',
+    location: 'Bangalore, India',
+    summary:
+      'Led architecture and delivery of PCI-compliant tokenization and conversational intelligence platforms with stringent latency and security SLAs.',
+    techHighlights: [
+      'Spring Boot',
+      'AWS KMS',
+      'DynamoDB',
+      'Redis',
+      'Docker',
+      'Kubernetes',
+      'Kafka',
+      'APISIX',
+      'Lua',
+      'GraphQL',
+      'ReactJS',
+    ],
+    projects: [
+      {
+        name: 'PCI Tokenization Service',
+        summary:
+          'Built a PCI DSS–compliant service encrypting sensitive card data with deterministic routing and wallet-based token grouping.',
+        achievements: [
+          'Engineered deterministic tokenization backed by AWS KMS and DynamoDB with near-real-time retrievals.',
+          'Established secure ingress via APISIX with custom Lua plugins for request validation, throttling, and observability.',
+          'Reduced payment processing latency with Redis caching and asynchronous Kafka workflows.',
+        ],
+        techStack: ['Spring Boot', 'AWS KMS', 'DynamoDB', 'Redis', 'Kafka', 'APISIX', 'Docker', 'Kubernetes'],
+      },
+      {
+        name: 'VEP Conversation Services',
+        summary:
+          'Delivered multi-channel conversation and participation services through a federated GraphQL gateway and microservices mesh.',
+        achievements: [
+          'Modeled conversational contexts and participant lifecycles with event-driven microservices.',
+          'Hit 90%+ automated test coverage using JUnit, Mockito, Cucumber, and Jacoco reporting.',
+          'Automated Kubernetes deployments with progressive delivery pipelines and runtime observability.',
+        ],
+        techStack: ['Spring Boot', 'GraphQL', 'AWS', 'Kafka', 'DynamoDB', 'Redis', 'ReactJS', 'Docker', 'Kubernetes'],
+      },
+    ],
+  },
+  {
+    company: 'Estuate Software Pvt. Ltd.',
+    role: 'Senior Software Engineer',
+    period: 'Aug 2020 – Feb 2022',
+    location: 'Bangalore, India',
+    summary:
+      'Strengthened enterprise integrations and cloud-readiness for global retail and SaaS customers through resilient API design.',
+    techHighlights: ['Spring Boot', 'React.js', 'AWS', 'MySQL', 'Microservices', 'REST APIs'],
+  },
+  {
+    company: 'SAP Labs (RLabs Enterprise Services Ltd.)',
+    role: 'Software Consultant',
+    period: 'Mar 2018 – Feb 2020',
+    location: 'Bangalore, India',
+    summary:
+      'Delivered recruitment platform capabilities on SAP HANA with OData-compliant services and high-availability integrations.',
+    techHighlights: ['SAP HANA', 'OData', 'Java', 'Spring'],
+  },
+  {
+    company: 'Wissen Technologies',
+    role: 'Software Analyst',
+    period: 'Apr 2016 – Mar 2018',
+    summary:
+      'Built event-driven microservices and integration pipelines for banking and retail clients with a focus on resilience.',
+    techHighlights: ['Java', 'Spring Boot', 'Microservices', 'REST APIs'],
+  },
+  {
+    company: 'JK Technosoft Ltd.',
+    role: 'Software Engineer',
+    period: 'Feb 2015 – Apr 2016',
+    summary:
+      'Delivered large-scale enterprise integrations and retail point-of-sale capabilities spanning recruiting, POS, and health domains.',
+    techHighlights: ['Spring', 'Hibernate', 'JSP', 'PostgreSQL', 'REST APIs'],
+  },
+]
+
+export const projectHighlights: ProjectHighlight[] = [
+  {
+    name: 'PCI Tokenization Service',
+    problem:
+      'Card networks required a PCI DSS–compliant vault to tokenize sensitive payment data without impacting transaction latency.',
+    architecture:
+      'Event-driven Spring Boot microservices secured with AWS KMS, fronted by APISIX API Gateway, and orchestrated on Kubernetes with Redis-backed low-latency caches.',
+    achievements: [
+      'Achieved sub-50ms token retrieval by combining Redis caching with deterministic key design in DynamoDB.',
+      'Implemented custom Lua plugins to enforce request signatures, rate limits, and audit logging across ingress traffic.',
+      'Automated blue/green deployments and observability dashboards for compliance and operations teams.',
+    ],
+    techStack: ['Spring Boot', 'AWS KMS', 'DynamoDB', 'Redis', 'Kafka', 'APISIX', 'Docker', 'Kubernetes'],
+  },
+  {
+    name: 'VEP Conversation Services',
+    problem:
+      'Needed a scalable backbone for conversational commerce and participation analytics across messaging channels.',
+    architecture:
+      'GraphQL gateway federating microservices with Kafka-backed event sourcing, deployed on AWS-managed Kubernetes.',
+    achievements: [
+      'Designed multi-tenant conversation models with fine-grained access controls and audit trails.',
+      'Integrated automated contract testing and Jacoco coverage gates to maintain 90%+ service coverage.',
+      'Operationalized auto-scaling policies for fluctuating conversation volumes across geographies.',
+    ],
+    techStack: ['Spring Boot', 'GraphQL', 'Kafka', 'AWS', 'DynamoDB', 'Redis', 'ReactJS', 'Docker', 'Kubernetes'],
+  },
+  {
+    name: 'POS System (Callaway Golf)',
+    problem:
+      'Retail franchises needed unified point-of-sale services with real-time inventory and payment integrations.',
+    architecture:
+      'Microservices-based POS with RESTful APIs, orchestrated CI/CD pipelines, and React-driven retail dashboards.',
+    achievements: [
+      'Delivered resilient order, inventory, and payment APIs with idempotent transaction handling.',
+      'Automated Jenkins pipelines enabling continuous delivery with integrated quality gates.',
+      'Collaborated on React front-ends to streamline associate workflows and reduce checkout times.',
+    ],
+    techStack: ['Spring Boot', 'React.js', 'Jenkins', 'AWS', 'MySQL', 'REST APIs'],
+  },
+  {
+    name: 'Recruiting Management (RCM)',
+    problem:
+      'Enterprises required extensible recruitment workflows integrated with SAP HANA and external HR systems.',
+    architecture:
+      'OData-compliant REST services exposing recruitment modules with SAP HANA persistence and Java-based business logic.',
+    achievements: [
+      'Produced extensible OData APIs enabling third-party integration partners and analytics tools.',
+      'Stabilized production environments through targeted hotfixes and rapid rollback procedures.',
+      'Optimized SAP HANA data models for high-volume talent acquisition pipelines.',
+    ],
+    techStack: ['SAP HANA', 'OData', 'Java', 'Spring'],
+  },
+  {
+    name: 'E-commerce Platform',
+    problem:
+      'Global ecommerce operator needed modular APIs to accelerate feature delivery across catalog, cart, and checkout domains.',
+    architecture:
+      'Domain-aligned Spring Boot microservices with RESTful APIs, centralized observability, and agile delivery practices.',
+    achievements: [
+      'Developed core commerce services covering catalog, pricing, and fulfillment workflows.',
+      'Enabled iterative releases by embedding feature toggles and contract tests in delivery pipelines.',
+      'Mentored cross-functional teams on microservice patterns and operational readiness.',
+    ],
+    techStack: ['Java', 'Spring Boot', 'REST APIs', 'Microservices'],
+  },
+  {
+    name: 'eHealth Kerala',
+    problem:
+      'State healthcare platform needed robust billing and patient management modules integrated with existing government systems.',
+    architecture:
+      'Spring MVC and Hibernate stack with PostgreSQL persistence, exposing secure modules to hospital networks.',
+    achievements: [
+      'Implemented billing modules with rigorous validation and audit-ready reporting.',
+      'Streamlined database operations and migration scripts to support phased rollouts across districts.',
+      'Collaborated with government stakeholders to align delivery milestones and compliance requirements.',
+    ],
+    techStack: ['Spring', 'Hibernate', 'JSP', 'PostgreSQL'],
+  },
+]
+
+export const certifications: Certification[] = [
+  {
+    name: 'AWS Developer Essentials: Identity, Compute and Storage',
+    provider: 'Coursera',
+    credentialId: 'OALW0WRT43HJ',
+  },
+  {
+    name: 'AWS S3 Basics',
+    provider: 'Coursera',
+    credentialId: 'CO8218R53E3Y',
+  },
+  {
+    name: 'Containerize Spring Boot CRUD with Docker and Docker Compose',
+    provider: 'Coursera',
+    credentialId: 'MO9218R53E5X',
+  },
+  {
+    name: 'Programming with Generative AI',
+    provider: 'Coursera',
+    credentialId: 'E4FC4DF66KNF',
+  },
+  {
+    name: 'Data Structures & Backend with Java',
+    provider: 'Coursera',
+    credentialId: 'Y2XCM54MV6RW',
+  },
+]
+
+export const education: EducationItem[] = [
+  {
+    program: 'Post Graduate Program in Cloud Computing',
+    institution: 'Great Lakes Institute',
+  },
+  {
+    program: 'Master of Computer Applications (MCA)',
+    institution: 'RNSIT College, Bangalore',
+  },
+  {
+    program: 'Bachelor of Science in Information Technology',
+    institution: 'Ranchi College, Ranchi',
+  },
+]
+
+export const externalProfiles: ExternalProfile[] = [
+  {
+    label: 'GitHub',
+    url: 'https://github.com/satishlabs',
+    type: 'github',
+  },
+  {
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/devsatish/',
+    type: 'linkedin',
+  },
+  {
+    label: 'Docker Hub',
+    url: 'https://hub.docker.com/u/prasadsatish06',
+    type: 'docker',
+  },
+  {
+    label: 'LeetCode',
+    url: 'https://leetcode.com/u/prasadsatish06',
+    type: 'leetcode',
+  },
+  {
+    label: 'Email',
+    url: 'mailto:prasadsatish.rnc@gmail.com',
+    type: 'email',
+  },
+]

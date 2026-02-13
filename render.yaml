@@ -1,0 +1,7 @@
+# Render Blueprint – Static Site
+# https://render.com/docs/blueprint-spec
+
+staticSites:
+  - name: satish-prasad-portfolio
+    buildCommand: npm install && npm run build
+    publishPath: dist

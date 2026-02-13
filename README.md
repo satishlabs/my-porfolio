@@ -50,6 +50,21 @@ npm run preview
 
 The build outputs static assets to `dist/`, which can be deployed to any static hosting provider (e.g., Netlify, Vercel, AWS S3 + CloudFront).
 
+## Deploy on Render
+
+1. **Push your repo to GitHub** (or GitLab/Bitbucket).
+2. **Sign in to [Render](https://render.com)** and click **New +** → **Static Site**.
+3. **Connect your repository** and select the portfolio repo.
+4. Configure the static site:
+   - **Name:** `satish-prasad-portfolio` (or your preferred name)
+   - **Build Command:** `npm install && npm run build`
+   - **Publish Directory:** `dist`
+   - **Node Version:** `20` (or higher)
+5. Click **Create Static Site**. Render will build and deploy; future pushes to the main branch trigger automatic deploys.
+6. Your site will be live at `https://<your-app-name>.onrender.com`. Add a custom domain in site settings if desired.
+
+> The project includes a `render.yaml` blueprint for automatic configuration.
+
 ## Deployment Notes
 
 1. Ensure the runtime environment uses Node ≥ 20.19 before running `npm run build`.
