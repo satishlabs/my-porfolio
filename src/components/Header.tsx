@@ -22,8 +22,10 @@ import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import { Link as ScrollLink } from 'react-scroll'
 import { useColorMode } from '../theme'
+import { shareViaWhatsAppUrl } from '../data/profile'
 import {
   AboutSection,
   ExperienceSection,
@@ -173,6 +175,23 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
+            <IconButton
+              component="a"
+              href={shareViaWhatsAppUrl()}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Share portfolio via WhatsApp"
+              color="inherit"
+              sx={{
+                color: 'text.secondary',
+                minWidth: 40,
+                minHeight: 40,
+                '&:hover': { color: 'primary.main', backgroundColor: 'action.hover' },
+                '&:focus-visible': { outline: '2px solid', outlineOffset: 2 },
+              }}
+            >
+              <ShareOutlinedIcon fontSize="small" />
+            </IconButton>
             <Divider orientation="vertical" flexItem sx={{ mx: 0.5, my: 1 }} />
             <IconButton
               onClick={toggleColorMode}
@@ -191,6 +210,16 @@ const Header = () => {
           </Stack>
 
           <Stack direction="row" alignItems="center" spacing={0} sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              component="a"
+              href={shareViaWhatsAppUrl()}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Share portfolio via WhatsApp"
+              sx={{ color: 'text.secondary', minWidth: 44, minHeight: 44 }}
+            >
+              <ShareOutlinedIcon fontSize="small" />
+            </IconButton>
             <IconButton
               onClick={toggleColorMode}
               aria-label="Toggle light/dark mode"

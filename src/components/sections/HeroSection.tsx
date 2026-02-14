@@ -1,9 +1,10 @@
 import { Box, Button, Chip, Stack, Typography } from '@mui/material'
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined'
 import { motion } from 'framer-motion'
 import { Link as ScrollLink } from 'react-scroll'
-import { hero } from '../../data/profile'
+import { hero, contact } from '../../data/profile'
 import SectionContainer from '../common/SectionContainer'
 import ProfilePhoto from '../common/ProfilePhoto'
 import PortfolioEngagement from '../common/PortfolioEngagement'
@@ -140,9 +141,13 @@ const HeroSection = () => (
               <LocationOnOutlinedIcon sx={{ fontSize: 18 }} />
               <Typography variant="body2" sx={{ fontSize: '0.875rem' }}>Bangalore, India</Typography>
             </Stack>
-            <Stack direction="row" spacing={0.75} alignItems="center">
+            <Stack direction="row" spacing={0.75} alignItems="center" component="a" href={`mailto:${contact.email}`} sx={{ color: 'inherit', textDecoration: 'none' }}>
               <EmailOutlinedIcon sx={{ fontSize: 18 }} />
-              <Typography variant="body2" sx={{ fontSize: '0.875rem' }}>prasadsatish.rnc@gmail.com</Typography>
+              <Typography variant="body2" sx={{ fontSize: '0.875rem' }}>{contact.email}</Typography>
+            </Stack>
+            <Stack direction="row" spacing={0.75} alignItems="center" component="a" href={contact.phoneTel} sx={{ color: 'inherit', textDecoration: 'none' }}>
+              <PhoneOutlinedIcon sx={{ fontSize: 18 }} />
+              <Typography variant="body2" sx={{ fontSize: '0.875rem' }}>{contact.phone}</Typography>
             </Stack>
           </Stack>
         </Stack>

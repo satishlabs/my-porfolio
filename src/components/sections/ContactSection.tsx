@@ -1,5 +1,8 @@
 import { useState } from 'react'
-import { Alert, Box, Button, Stack, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Link, Stack, TextField, Typography } from '@mui/material'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -7,6 +10,7 @@ import { motion } from 'framer-motion'
 import SectionContainer from '../common/SectionContainer'
 import SectionHeading from '../common/SectionHeading'
 import { fadeInUp } from '../common/motion'
+import { contact, shareViaWhatsAppUrl } from '../../data/profile'
 
 type ContactFormValues = {
   name: string
@@ -60,6 +64,45 @@ const ContactSection = () => {
         subtitle="Share a note about your engineering challenge or upcoming initiative. I’ll get back within one business day."
         align="center"
       />
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={2}
+        justifyContent="center"
+        flexWrap="wrap"
+        useFlexGap
+        sx={{ mb: 3 }}
+      >
+        <Link
+          href={`mailto:${contact.email}`}
+          color="text.secondary"
+          underline="hover"
+          sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}
+        >
+          <EmailOutlinedIcon fontSize="small" />
+          {contact.email}
+        </Link>
+        <Link
+          href={contact.phoneTel}
+          color="text.secondary"
+          underline="hover"
+          sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}
+        >
+          <PhoneOutlinedIcon fontSize="small" />
+          {contact.phone}
+        </Link>
+        <Button
+          component="a"
+          href={shareViaWhatsAppUrl()}
+          target="_blank"
+          rel="noreferrer"
+          variant="outlined"
+          color="primary"
+          startIcon={<ShareOutlinedIcon />}
+          size="medium"
+        >
+          Share my portfolio
+        </Button>
+      </Stack>
       <Stack
         component={motion.form}
         initial="hidden"
@@ -128,7 +171,7 @@ const ContactSection = () => {
         ) : null}
         {status === 'error' ? (
           <Alert severity="error" onClose={() => setStatus('idle')}>
-            Something went wrong. Please retry or reach out at prasadsatish.rnc@gmail.com.
+            Something went wrong. Please retry or reach out at {contact.email} or {contact.phone}.
           </Alert>
         ) : null}
       </Stack>

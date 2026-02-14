@@ -2,6 +2,7 @@ import { Divider, Link, Stack, Typography } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined'
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded'
 import type { ComponentProps } from 'react'
 import { SvgIcon } from '@mui/material'
@@ -28,6 +29,8 @@ const getIcon = (type: (typeof externalProfiles)[number]['type']) => {
       return <CodeRoundedIcon fontSize="small" />
     case 'email':
       return <EmailOutlinedIcon fontSize="small" />
+    case 'phone':
+      return <PhoneOutlinedIcon fontSize="small" />
     default:
       return <CodeRoundedIcon fontSize="small" />
   }

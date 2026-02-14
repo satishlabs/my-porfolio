@@ -50,7 +50,23 @@ export type EducationTimelineItem = {
 export type ExternalProfile = {
   label: string
   url: string
-  type: 'github' | 'linkedin' | 'docker' | 'leetcode' | 'email'
+  type: 'github' | 'linkedin' | 'docker' | 'leetcode' | 'email' | 'phone'
+}
+
+/** Base URL for the portfolio (used for share links and canonical URL). */
+export const portfolioUrl = 'https://www.hastech.it.com/'
+
+/** Contact details for display and tel/mailto links. */
+export const contact = {
+  email: 'prasadsatish.rnc@gmail.com',
+  phone: '+91 9050618092',
+  phoneTel: 'tel:+919050618092',
+} as const
+
+/** WhatsApp share link: opens WhatsApp with pre-filled "Share my portfolio" message. */
+export const shareViaWhatsAppUrl = (): string => {
+  const text = `Check out Satish Prasad's portfolio – Senior Java Backend Engineer & Cloud Architect: ${portfolioUrl}`
+  return `https://wa.me/?text=${encodeURIComponent(text)}`
 }
 
 export const hero = {
@@ -368,5 +384,10 @@ export const externalProfiles: ExternalProfile[] = [
     label: 'Email',
     url: 'mailto:prasadsatish.rnc@gmail.com',
     type: 'email',
+  },
+  {
+    label: 'Phone',
+    url: 'tel:+919050618092',
+    type: 'phone',
   },
 ]
