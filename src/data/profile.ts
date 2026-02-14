@@ -71,20 +71,19 @@ export const shareViaWhatsAppUrl = (): string => {
 
 export const hero = {
   name: 'Satish Prasad',
-  title: 'Senior Java Backend Engineer | Cloud & Microservices Architect',
+  title: 'Senior Java Backend Engineer · Cloud & Microservices Architect',
   tagline:
-    'Engineering resilient, cloud-native platforms and tokenization services for regulated enterprises.',
+    'I design and deliver secure, cloud-native platforms and PCI-compliant tokenization services for regulated enterprises—with measurable impact on latency, compliance, and scale.',
   primaryCtas: [
-    { label: 'View Projects', href: '#experience' },
+    { label: 'View Experience', href: '#experience' },
     { label: 'Download Resume', href: '/Satish_Prasad_Resume.pdf', download: true },
   ],
 }
 
 export const about = [
-  'Senior Java Backend Engineer with 10+ years designing and delivering secure, cloud-native services across regulated industries.',
-  'Architects microservices ecosystems with Spring Boot and Spring Cloud, applying domain-driven design, event-driven integration, and zero-downtime deployment strategies.',
-  'Partners with product and security teams to embed encryption, observability, and compliance (PCI DSS, GDPR) into distributed systems at scale.',
-  'Dashboards shouldn’t overwhelm. I design clean, data-focused interfaces that make complex information easy to understand and act on — even for non-technical users.',
+  'I am a Senior Java Backend Engineer with 10+ years of experience designing and delivering secure, cloud-native services for regulated industries. My work spans payment tokenization, conversational platforms, enterprise integrations, and high-availability systems—from architecture through deployment and operations.',
+  'I build microservices ecosystems with Spring Boot and Spring Cloud, applying domain-driven design, event-driven integration, and zero-downtime deployment strategies. I partner with product and security teams to embed encryption, observability, and compliance (PCI DSS, GDPR) into distributed systems at scale. Core strengths include API design, cloud architecture (AWS), and bringing clarity to complex technical and product requirements.',
+  'I focus on problems where security, latency, and reliability are non-negotiable: tokenization and payment data, multi-tenant conversation services, and integrations with SAP and external HR systems. I am based in Bangalore, India, and work with global teams across time zones.',
 ]
 
 export const skills: SkillCategory[] = [

@@ -59,9 +59,9 @@ const ContactSection = () => {
   return (
     <SectionContainer id="contact">
       <SectionHeading
-        eyebrow="Get In Touch"
-        title="Ready to discuss backend modernization or cloud architecture?"
-        subtitle="Share a note about your engineering challenge or upcoming initiative. I’ll get back within one business day."
+        eyebrow="Get in touch"
+        title="Let's talk about your next project"
+        subtitle="Whether you're scaling microservices, hardening compliance, or modernizing legacy systems—share your challenge. I’ respond within one business day."
         align="center"
       />
       <Stack
