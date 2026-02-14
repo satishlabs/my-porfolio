@@ -1,8 +1,8 @@
-import { Box, Chip, Paper, Stack, Typography } from '@mui/material'
+import { Box, Chip, Link, Paper, Stack, Typography } from '@mui/material'
 import SectionContainer from '../common/SectionContainer'
 import SectionHeading from '../common/SectionHeading'
 import SkillCategoryGrid from '../common/SkillCategoryGrid'
-import { skills } from '../../data/profile'
+import { skills, techLearnUrls } from '../../data/profile'
 
 const keyTechStack = [
   'Java', 'Spring Boot', 'Spring Cloud', 'AWS', 'Kubernetes', 'Docker',
@@ -34,18 +34,48 @@ const SkillsSection = () => (
           </Typography>
           <Box>
             <Typography variant="subtitle2" color="text.secondary" sx={{ fontWeight: 600, mb: 1.5 }}>
-              Key technologies
+              Key technologies — click to learn
             </Typography>
             <Stack direction="row" flexWrap="wrap" gap={1} useFlexGap>
-              {keyTechStack.map((tech) => (
-                <Chip key={tech} label={tech} variant="filled" color="primary" size="small" sx={{ fontWeight: 500, borderRadius: 1.5 }} />
-              ))}
+              {keyTechStack.map((tech) => {
+                const url = techLearnUrls[tech]
+                const chip = (
+                  <Chip
+                    key={tech}
+                    label={tech}
+                    variant="filled"
+                    color="primary"
+                    size="small"
+                    sx={{
+                      fontWeight: 500,
+                      borderRadius: 1.5,
+                      ...(url && { '&:hover': { opacity: 0.9 } }),
+                    }}
+                  />
+                )
+                return url ? (
+                  <Link
+                    key={tech}
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    underline="none"
+                    color="inherit"
+                    sx={{ display: 'inline-flex' }}
+                    aria-label={`Learn ${tech}`}
+                  >
+                    {chip}
+                  </Link>
+                ) : (
+                  chip
+                )
+              })}
             </Stack>
           </Box>
         </Stack>
       </Paper>
     </Box>
-    <SkillCategoryGrid categories={skills} />
+    <SkillCategoryGrid categories={skills} learnUrlMap={techLearnUrls} />
   </SectionContainer>
 )
 

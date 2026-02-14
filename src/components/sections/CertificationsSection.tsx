@@ -10,7 +10,7 @@ const CertificationsSection = () => (
     <SectionHeading
       eyebrow="Certifications"
       title="Continuous learning across cloud, containers, and applied engineering."
-      subtitle="Selected certifications in cloud, microservices, and applied engineering—verified and linked below."
+      subtitle="Formal education and certifications that reinforce practitioner-level expertise across modern platforms."
     />
     <Box
       sx={{
@@ -22,7 +22,7 @@ const CertificationsSection = () => (
       <AnimatedCard>
         <Stack spacing={3}>
           <Typography variant="h5" component="h3">
-            Best-in-class certifications
+            Certifications & Specialized Training
           </Typography>
           <Stack spacing={2}>
             {certifications.map((cert) => (

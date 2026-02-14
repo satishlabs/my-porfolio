@@ -71,6 +71,35 @@ export const shareViaWhatsAppUrl = (): string => {
   return `https://wa.me/?text=${encodeURIComponent(text)}`
 }
 
+/** Learn URLs for tech stack (Technical Leadership): official docs or high-quality learning. */
+export const techLearnUrls: Record<string, string> = {
+  Java: 'https://dev.java/learn/',
+  'Spring Boot': 'https://spring.io/guides/gs/spring-boot/',
+  'Spring Cloud': 'https://spring.io/projects/spring-cloud',
+  AWS: 'https://aws.amazon.com/getting-started/',
+  Kubernetes: 'https://kubernetes.io/docs/tutorials/kubernetes-basics/',
+  Docker: 'https://docs.docker.com/get-started/',
+  Kafka: 'https://kafka.apache.org/documentation/',
+  Redis: 'https://redis.io/docs/getting-started/',
+  PostgreSQL: 'https://www.postgresql.org/docs/',
+  DynamoDB: 'https://docs.aws.amazon.com/dynamodb/latest/developerguide/',
+  GraphQL: 'https://graphql.org/learn/',
+  Microservices: 'https://microservices.io/',
+  RabbitMQ: 'https://www.rabbitmq.com/getstarted.html',
+  'Spring Security': 'https://spring.io/projects/spring-security',
+  MongoDB: 'https://www.mongodb.com/docs/manual/',
+  MySQL: 'https://dev.mysql.com/doc/',
+  Maven: 'https://maven.apache.org/guides/',
+  Gradle: 'https://docs.gradle.org/current/userguide/userguide.html',
+  Jenkins: 'https://www.jenkins.io/doc/',
+  'GitHub Actions': 'https://docs.github.com/en/actions',
+  Git: 'https://git-scm.com/doc',
+  JUnit: 'https://junit.org/junit5/docs/current/user-guide/',
+  React: 'https://react.dev/learn',
+  'React.js': 'https://react.dev/learn',
+  TypeScript: 'https://www.typescriptlang.org/docs/',
+}
+
 export const hero = {
   name: 'Satish Prasad',
   title: 'Senior Java Backend Engineer · Cloud & Microservices Architect',

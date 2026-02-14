@@ -3,7 +3,7 @@ import SectionContainer from '../common/SectionContainer'
 import SectionHeading from '../common/SectionHeading'
 import SkillCategoryGrid from '../common/SkillCategoryGrid'
 import LaptopCodeVisual from '../common/LaptopCodeVisual'
-import { about, skills } from '../../data/profile'
+import { about, skills, techLearnUrls } from '../../data/profile'
 
 const CONTENT_MAX_WIDTH = 720
 
@@ -70,8 +70,8 @@ const AboutSection = () => {
         </Typography>
       </Box>
 
-      {/* Single place for tech stack: category grid only */}
-      <SkillCategoryGrid categories={skills} />
+      {/* Single place for tech stack: category grid with learn links */}
+      <SkillCategoryGrid categories={skills} learnUrlMap={techLearnUrls} />
       </Box>
     </SectionContainer>
   )
