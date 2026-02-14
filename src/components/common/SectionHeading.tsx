@@ -1,5 +1,7 @@
 import { Stack, Typography, useTheme } from '@mui/material'
+import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { fadeInUp } from './motion'
 
 type SectionHeadingProps = {
   eyebrow?: string
@@ -15,11 +17,16 @@ const SectionHeading = ({ eyebrow, title, subtitle, action, align = 'left' }: Se
 
   return (
     <Stack
+      component={motion.div}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeInUp}
       direction={{ xs: 'column', md: action ? 'row' : 'column' }}
       justifyContent="space-between"
       alignItems={alignment}
       spacing={2}
-      sx={{ mb: { xs: 6, md: 8 }, textAlign: align === 'center' ? 'center' : 'left' }}
+      sx={{ mb: { xs: 6, md: 8 }, textAlign: align === 'center' ? 'center' : 'left' } as const}
     >
       <Stack spacing={1} alignItems={alignment}>
         {eyebrow ? (
@@ -36,11 +43,11 @@ const SectionHeading = ({ eyebrow, title, subtitle, action, align = 'left' }: Se
             {eyebrow}
           </Typography>
         ) : null}
-        <Typography variant="h2" component="h2" sx={{ maxWidth: 720, letterSpacing: '-0.02em' }}>
+        <Typography variant="h2" component="h2" sx={{ maxWidth: 640, letterSpacing: '-0.02em', fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' } }}>
           {title}
         </Typography>
         {subtitle ? (
-          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 720, lineHeight: 1.75 }}>
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 640, lineHeight: 1.75 }}>
             {subtitle}
           </Typography>
         ) : null}

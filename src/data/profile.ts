@@ -22,6 +22,7 @@ export type ExperienceItem = {
 
 export type ProjectHighlight = {
   name: string
+  company: string
   problem: string
   architecture: string
   achievements: string[]
@@ -40,6 +41,12 @@ export type EducationItem = {
   focus?: string
 }
 
+export type EducationTimelineItem = {
+  image: string
+  title: string
+  institution: string
+}
+
 export type ExternalProfile = {
   label: string
   url: string
@@ -52,7 +59,7 @@ export const hero = {
   tagline:
     'Engineering resilient, cloud-native platforms and tokenization services for regulated enterprises.',
   primaryCtas: [
-    { label: 'View Projects', href: '#projects' },
+    { label: 'View Projects', href: '#experience' },
     { label: 'Download Resume', href: '/Satish_Prasad_Resume.pdf', download: true },
   ],
 }
@@ -61,6 +68,7 @@ export const about = [
   'Senior Java Backend Engineer with 10+ years designing and delivering secure, cloud-native services across regulated industries.',
   'Architects microservices ecosystems with Spring Boot and Spring Cloud, applying domain-driven design, event-driven integration, and zero-downtime deployment strategies.',
   'Partners with product and security teams to embed encryption, observability, and compliance (PCI DSS, GDPR) into distributed systems at scale.',
+  'Dashboards shouldn’t overwhelm. I design clean, data-focused interfaces that make complex information easy to understand and act on — even for non-technical users.',
 ]
 
 export const skills: SkillCategory[] = [
@@ -200,6 +208,7 @@ export const experience: ExperienceItem[] = [
 export const projectHighlights: ProjectHighlight[] = [
   {
     name: 'PCI Tokenization Service',
+    company: 'Altimetrik India Pvt. Ltd.',
     problem:
       'Card networks required a PCI DSS–compliant vault to tokenize sensitive payment data without impacting transaction latency.',
     architecture:
@@ -213,6 +222,7 @@ export const projectHighlights: ProjectHighlight[] = [
   },
   {
     name: 'VEP Conversation Services',
+    company: 'Altimetrik India Pvt. Ltd.',
     problem:
       'Needed a scalable backbone for conversational commerce and participation analytics across messaging channels.',
     architecture:
@@ -226,6 +236,7 @@ export const projectHighlights: ProjectHighlight[] = [
   },
   {
     name: 'POS System (Callaway Golf)',
+    company: 'Estuate Software Pvt. Ltd.',
     problem:
       'Retail franchises needed unified point-of-sale services with real-time inventory and payment integrations.',
     architecture:
@@ -239,6 +250,7 @@ export const projectHighlights: ProjectHighlight[] = [
   },
   {
     name: 'Recruiting Management (RCM)',
+    company: 'SAP Labs (RLabs Enterprise Services Ltd.)',
     problem:
       'Enterprises required extensible recruitment workflows integrated with SAP HANA and external HR systems.',
     architecture:
@@ -252,6 +264,7 @@ export const projectHighlights: ProjectHighlight[] = [
   },
   {
     name: 'E-commerce Platform',
+    company: 'Wissen Technologies',
     problem:
       'Global ecommerce operator needed modular APIs to accelerate feature delivery across catalog, cart, and checkout domains.',
     architecture:
@@ -265,6 +278,7 @@ export const projectHighlights: ProjectHighlight[] = [
   },
   {
     name: 'eHealth Kerala',
+    company: 'JK Technosoft Ltd.',
     problem:
       'State healthcare platform needed robust billing and patient management modules integrated with existing government systems.',
     architecture:
@@ -319,6 +333,14 @@ export const education: EducationItem[] = [
     program: 'Bachelor of Science in Information Technology',
     institution: 'Ranchi College, Ranchi',
   },
+]
+
+export const educationTimeline: EducationTimelineItem[] = [
+  { image: '/education/1.png', title: 'Schooling', institution: 'First grade – 7th · Government Middle School Tatisilwai Chatra, Ranchi' },
+  { image: '/education/2.png', title: 'Secondary', institution: '8th – 10th · Government High School, Tatisilwai, Ranchi' },
+  { image: '/education/3.png', title: 'Inter College (PCM)', institution: "St. Paul's College, Church Road Ranchi" },
+  { image: '/education/4.png', title: 'Graduation', institution: 'B.Sc. Information Technology · Ranchi College, Ranchi' },
+  { image: '/education/5.png', title: 'Post Graduation', institution: 'MCA · RNS Institute of Technology, Bangalore' },
 ]
 
 export const externalProfiles: ExternalProfile[] = [

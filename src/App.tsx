@@ -4,10 +4,9 @@ import Footer from './components/Footer'
 import {
   HeroSection,
   AboutSection,
-  SkillsSection,
   ExperienceSection,
-  ProjectsSection,
   CertificationsSection,
+  EducationSection,
   ProfilesSection,
   ContactSection,
 } from './components/sections'
@@ -26,10 +25,9 @@ const App = () => (
     <Stack component="main" spacing={0}>
       <HeroSection />
       <AboutSection />
-      <SkillsSection />
       <ExperienceSection />
-      <ProjectsSection />
       <CertificationsSection />
+      <EducationSection />
       <ProfilesSection />
       <ContactSection />
     </Stack>

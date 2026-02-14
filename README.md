@@ -5,7 +5,7 @@ Enterprise-grade personal portfolio for Satish Prasad, Senior Java Backend Engin
 ## Features
 
 - Responsive, mobile-first layout with light/dark theme toggle and persistence
-- Hero, About, Skills, Experience timeline, Project highlights, Certifications, Profiles, and Contact form sections
+- Hero with profile photo (circular, lazy-loaded, fallback initials), About, Skills, **horizontal Experience** (scrollable cards), Project highlights, Certifications, Profiles, and Contact form sections
 - Resume-driven content (no placeholders) with downloadable PDF at `public/Satish_Prasad_Resume.pdf`
 - Animations via Framer Motion with accessibility-friendly reveal timing
 - Structured data layer in `src/data/profile.ts` for easy maintenance
@@ -88,8 +88,18 @@ src/
   App.tsx           # Assembles sections + layout
   main.tsx          # Entrypoint wiring theme provider and React root
 public/
+  profile-photo.png   # Optional: replace with your headshot for Hero
   Satish_Prasad_Resume.pdf
 ```
+
+## UI/UX decisions (refactor summary)
+
+- **Mobile-first & responsiveness:** Fluid layouts with MUI Grid/Flexbox, `scroll-padding-top` and `overflow-x: hidden` to avoid horizontal scroll. Section spacing and typography scale by breakpoint (xs → md).
+- **Experience section:** Switched from vertical timeline to a **horizontal scroll** of cards so roles are scannable and work on small screens (swipe/scroll). Each card shows company, role, duration, impact summary, and tech chips with clear separation and scroll-snap.
+- **Profile photo:** Placed in the Hero for immediate recognition. Circular crop, border, and shadow for a clean look; lazy loading and an “SP” initials fallback if the image fails. Image path: `public/profile-photo.png`.
+- **Theme & accessibility:** Existing indigo/teal palette kept; button hover (subtle lift) and `:focus-visible` outlines for keyboard users. Touch targets ≥ 44px in header/footer.
+- **Navigation & footer:** Active section highlighting in header (and mobile drawer). Footer shows nav links and profile links with icons + text for clarity and visibility.
+- **Animations:** Section headings and experience cards use Framer Motion `fadeInUp` with `whileInView` and `once: true` to avoid over-animation while keeping a polished feel.
 
 ## Customization
 

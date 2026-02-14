@@ -83,11 +83,13 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
       fontWeight: 800,
       letterSpacing: '-0.03em',
       lineHeight: 1.15,
+      fontSize: 'clamp(2rem, 5vw, 3.75rem)',
     },
     h2: {
       fontWeight: 700,
       letterSpacing: '-0.02em',
       lineHeight: 1.25,
+      fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
     },
     h3: {
       fontWeight: 600,
@@ -126,6 +128,14 @@ const getDesignTokens = (mode: PaletteMode): ThemeOptions => ({
           paddingBlock: 14,
           fontWeight: 600,
           letterSpacing: '0.03em',
+          transition: 'background-color 0.2s ease, color 0.2s ease, transform 0.2s ease',
+          '&:hover': {
+            transform: 'translateY(-1px)',
+          },
+          '&:focus-visible': {
+            outline: '2px solid',
+            outlineOffset: 2,
+          },
         },
       },
     },
