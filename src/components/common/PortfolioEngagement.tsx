@@ -28,7 +28,6 @@ export default function PortfolioEngagement() {
 
   useEffect(() => {
     let cancelled = false
-    const voterId = getOrCreateVoterId()
 
     async function init() {
       const counts = await fetchCountsFromApi()
