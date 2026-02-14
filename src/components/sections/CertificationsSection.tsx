@@ -1,15 +1,16 @@
-import { Box, Chip, Stack, Typography } from '@mui/material'
+import { Box, Chip, Link, Stack, Typography } from '@mui/material'
+import OpenInNewRoundedIcon from '@mui/icons-material/OpenInNewRounded'
 import SectionContainer from '../common/SectionContainer'
 import SectionHeading from '../common/SectionHeading'
 import AnimatedCard from '../common/AnimatedCard'
 import { certifications, education } from '../../data/profile'
 
 const CertificationsSection = () => (
-  <SectionContainer id="credentials">
+  <SectionContainer id="certifications">
     <SectionHeading
-      eyebrow="Credentials"
+      eyebrow="Certifications"
       title="Continuous learning across cloud, containers, and applied engineering."
-      subtitle="Formal education and certifications that reinforce practitioner-level expertise across modern platforms."
+      subtitle="Selected certifications in cloud, microservices, and applied engineering—verified and linked below."
     />
     <Box
       sx={{
@@ -21,7 +22,7 @@ const CertificationsSection = () => (
       <AnimatedCard>
         <Stack spacing={3}>
           <Typography variant="h5" component="h3">
-            Certifications & Specialized Training
+            Best-in-class certifications
           </Typography>
           <Stack spacing={2}>
             {certifications.map((cert) => (
@@ -29,11 +30,24 @@ const CertificationsSection = () => (
                 <Typography variant="subtitle1" fontWeight={600}>
                   {cert.name}
                 </Typography>
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
                   <Typography variant="body2" color="text.secondary">
                     {cert.provider}
                   </Typography>
-                  {cert.credentialId ? <Chip size="small" label={`Verify: ${cert.credentialId}`} /> : null}
+                  {cert.verifyUrl ? (
+                    <Link
+                      href={cert.verifyUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      variant="body2"
+                      sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5 }}
+                    >
+                      Verify certificate
+                      <OpenInNewRoundedIcon sx={{ fontSize: 14 }} />
+                    </Link>
+                  ) : cert.credentialId ? (
+                    <Chip size="small" label={`Verify: ${cert.credentialId}`} />
+                  ) : null}
                 </Stack>
               </Stack>
             ))}

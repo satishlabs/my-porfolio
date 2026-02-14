@@ -33,6 +33,8 @@ export type Certification = {
   name: string
   provider: string
   credentialId?: string
+  /** Coursera (or other) verify URL for the certificate. */
+  verifyUrl?: string
 }
 
 export type EducationItem = {
@@ -312,26 +314,55 @@ export const certifications: Certification[] = [
     name: 'AWS Developer Essentials: Identity, Compute and Storage',
     provider: 'Coursera',
     credentialId: 'OALW0WRT43HJ',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/OALW0WRT43HJ',
   },
   {
     name: 'AWS S3 Basics',
     provider: 'Coursera',
-    credentialId: 'CO8218R53E3Y',
+    credentialId: 'U0OJ7AXEAZGJ',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/U0OJ7AXEAZGJ',
   },
   {
     name: 'Containerize Spring Boot CRUD with Docker and Docker Compose',
     provider: 'Coursera',
     credentialId: 'MO9218R53E5X',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/MO9218R53E5X',
   },
   {
     name: 'Programming with Generative AI',
     provider: 'Coursera',
     credentialId: 'E4FC4DF66KNF',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/E4FC4DF66KNF',
+  },
+  {
+    name: 'Generative AI for Everyone',
+    provider: 'Coursera',
+    credentialId: 'YKH4FS5VZLFL',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/YKH4FS5VZLFL',
+  },
+  {
+    name: 'Microservice Architectures',
+    provider: 'Coursera',
+    credentialId: 'EOD6MUC0P8E7',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/EOD6MUC0P8E7',
+  },
+  {
+    name: 'Apache Kafka Series - Learn Apache Kafka for Beginners v3',
+    provider: 'Coursera',
+    credentialId: '0JM9G2V6S6SN',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/0JM9G2V6S6SN',
+  },
+  {
+    name: 'Spring - Cloud Overview',
+    provider: 'Coursera',
+    credentialId: 'GXEHLSFMUCZM',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/GXEHLSFMUCZM',
   },
   {
     name: 'Data Structures & Backend with Java',
     provider: 'Coursera',
     credentialId: 'Y2XCM54MV6RW',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/Y2XCM54MV6RW',
   },
 ]
 

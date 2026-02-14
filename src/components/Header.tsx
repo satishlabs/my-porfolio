@@ -38,7 +38,7 @@ import {
 const navItems = [
   { label: 'About', to: 'about' },
   { label: 'Experience', to: 'experience' },
-  { label: 'Credentials', to: 'credentials' },
+  { label: 'Certifications', to: 'certifications' },
   { label: 'Education', to: 'education' },
   { label: 'Profiles', to: 'profiles' },
   { label: 'Contact', to: 'contact' },
@@ -92,7 +92,7 @@ function SectionPopupContent({ sectionId }: { sectionId: string }) {
       return <AboutSection />
     case 'experience':
       return <ExperienceSection />
-    case 'credentials':
+    case 'certifications':
       return <CertificationsSection />
     case 'education':
       return <EducationSection />

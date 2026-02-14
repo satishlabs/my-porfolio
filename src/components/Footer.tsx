@@ -40,6 +40,7 @@ const footerNav = [
   { label: 'Home', to: 'home' },
   { label: 'About', to: 'about' },
   { label: 'Experience', to: 'experience' },
+  { label: 'Certifications', to: 'certifications' },
   { label: 'Education', to: 'education' },
   { label: 'Contact', to: 'contact' },
 ]

@@ -1,16 +1,21 @@
-import { Box, IconButton, Stack, Typography } from '@mui/material'
+import { Box, IconButton, Stack, Tooltip, Typography } from '@mui/material'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined'
 import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
-  incrementViews,
+  fetchCountsFromApi,
   getLikes,
   getDislikes,
+  getOrCreateVoterId,
   getStoredVote,
-  setVote,
+  incrementViews,
+  reportViewToApi,
+  setStoredVoteOnly,
+  setVote as setVoteLocal,
+  submitVoteToApi,
   type Vote,
 } from '../../lib/engagementStorage'
 
@@ -19,21 +24,62 @@ export default function PortfolioEngagement() {
   const [likes, setLikes] = useState(0)
   const [dislikes, setDislikes] = useState(0)
   const [vote, setVoteState] = useState<Vote>(null)
+  const [synced, setSynced] = useState(false)
 
   useEffect(() => {
-    setViews(incrementViews())
-    setLikes(getLikes())
-    setDislikes(getDislikes())
-    setVoteState(getStoredVote())
+    let cancelled = false
+    const voterId = getOrCreateVoterId()
+
+    async function init() {
+      const counts = await fetchCountsFromApi()
+      if (cancelled) return
+      if (counts) {
+        setViews(counts.views)
+        setLikes(counts.likes)
+        setDislikes(counts.dislikes)
+        setSynced(true)
+        const afterView = await reportViewToApi()
+        if (!cancelled && afterView) {
+          setViews(afterView.views)
+          setLikes(afterView.likes)
+          setDislikes(afterView.dislikes)
+        }
+        setVoteState(getStoredVote())
+        return
+      }
+      setSynced(false)
+      setViews(incrementViews())
+      setLikes(getLikes())
+      setDislikes(getDislikes())
+      setVoteState(getStoredVote())
+    }
+    init()
+    return () => {
+      cancelled = true
+    }
   }, [])
 
-  const handleVote = (newVote: Vote) => {
-    const next = vote === newVote ? null : newVote
-    const { likes: L, dislikes: D } = setVote(next)
-    setLikes(L)
-    setDislikes(D)
-    setVoteState(next)
-  }
+  const handleVote = useCallback(
+    async (newVote: Vote) => {
+      const next = vote === newVote ? null : newVote
+      if (synced) {
+        const voterId = getOrCreateVoterId()
+        const counts = await submitVoteToApi(voterId, next)
+        if (counts) {
+          setLikes(counts.likes)
+          setDislikes(counts.dislikes)
+          setVoteState(next)
+          setStoredVoteOnly(next)
+        }
+        return
+      }
+      const { likes: L, dislikes: D } = setVoteLocal(next)
+      setLikes(L)
+      setDislikes(D)
+      setVoteState(next)
+    },
+    [synced, vote]
+  )
 
   return (
     <Box
@@ -81,6 +127,13 @@ export default function PortfolioEngagement() {
           {dislikes}
         </Typography>
       </Stack>
+      {!synced && (
+        <Tooltip title="Counts are stored on this device only. Deploy with the engagement API to sync across devices.">
+          <Typography variant="caption" color="text.secondary" sx={{ opacity: 0.8 }}>
+            (this device)
+          </Typography>
+        </Tooltip>
+      )}
     </Box>
   )
 }

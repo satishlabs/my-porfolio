@@ -2,9 +2,78 @@ const VIEWS_KEY = 'portfolio_views'
 const LIKES_KEY = 'portfolio_likes'
 const DISLIKES_KEY = 'portfolio_dislikes'
 const VOTE_KEY = 'portfolio_vote'
+const VOTER_ID_KEY = 'portfolio_voter_id'
 const COMMENTS_KEY = 'portfolio_comments'
 
+const ENGAGEMENT_API = '/api/engagement'
+
 export type Vote = 'like' | 'dislike' | null
+
+export type EngagementCounts = { views: number; likes: number; dislikes: number }
+
+/** Stable ID for this device (so one vote per device when using API). */
+export function getOrCreateVoterId(): string {
+  if (typeof window === 'undefined') return ''
+  let id = localStorage.getItem(VOTER_ID_KEY)
+  if (!id) {
+    id = `v_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`
+    localStorage.setItem(VOTER_ID_KEY, id)
+  }
+  return id
+}
+
+/** Fetch counts from API. Returns null if API unavailable or fails. */
+export async function fetchCountsFromApi(): Promise<EngagementCounts | null> {
+  if (typeof window === 'undefined') return null
+  try {
+    const res = await fetch(ENGAGEMENT_API, { method: 'GET' })
+    if (!res.ok) return null
+    const data = (await res.json()) as EngagementCounts
+    if (typeof data.views !== 'number' || typeof data.likes !== 'number' || typeof data.dislikes !== 'number')
+      return null
+    return { views: data.views, likes: data.likes, dislikes: data.dislikes }
+  } catch {
+    return null
+  }
+}
+
+/** Report a view to API and return updated counts, or null. */
+export async function reportViewToApi(): Promise<EngagementCounts | null> {
+  if (typeof window === 'undefined') return null
+  try {
+    const res = await fetch(ENGAGEMENT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'view' }),
+    })
+    if (!res.ok) return null
+    const data = (await res.json()) as EngagementCounts
+    if (typeof data.views !== 'number' || typeof data.likes !== 'number' || typeof data.dislikes !== 'number')
+      return null
+    return data
+  } catch {
+    return null
+  }
+}
+
+/** Submit vote to API and return updated counts, or null. */
+export async function submitVoteToApi(voterId: string, vote: Vote): Promise<EngagementCounts | null> {
+  if (typeof window === 'undefined') return null
+  try {
+    const res = await fetch(ENGAGEMENT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'vote', voterId, vote }),
+    })
+    if (!res.ok) return null
+    const data = (await res.json()) as EngagementCounts
+    if (typeof data.views !== 'number' || typeof data.likes !== 'number' || typeof data.dislikes !== 'number')
+      return null
+    return data
+  } catch {
+    return null
+  }
+}
 
 export type Comment = {
   id: string
@@ -63,6 +132,12 @@ export function setVote(vote: Vote): { likes: number; dislikes: number } {
   localStorage.setItem(DISLIKES_KEY, String(dislikes))
   localStorage.setItem(VOTE_KEY, vote ?? '')
   return { likes, dislikes }
+}
+
+/** Only persist current user's vote (for UI state when using API). */
+export function setStoredVoteOnly(vote: Vote): void {
+  if (typeof window === 'undefined') return
+  localStorage.setItem(VOTE_KEY, vote ?? '')
 }
 
 export function getComments(): Comment[] {
